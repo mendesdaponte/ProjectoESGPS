@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FDD052E5-2FF3-42EA-B827-FBD0CC9EB352}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProjectoESGPS</RootNamespace>
+    <AssemblyName>ProjectoESGPS</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddUser.Designer.cs">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Appointement.cs">
+      <DependentUpon>ModelDiagramaBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppointmentList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppointmentList.Designer.cs">
+      <DependentUpon>AppointmentList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AppointmentInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppointmentInfo.Designer.cs">
+      <DependentUpon>AppointmentInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CData.cs">
+      <DependentUpon>ModelDiagramaBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CreateAppointment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateAppointment.Designer.cs">
+      <DependentUpon>CreateAppointment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Files.cs">
+      <DependentUpon>ModelDiagramaBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainAdmin.Designer.cs">
+      <DependentUpon>MainAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManagePatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManagePatient.Designer.cs">
+      <DependentUpon>ManagePatient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModelDiagramaBD.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelDiagramaBD.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelDiagramaBD.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelDiagramaBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelDiagramaBD.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelDiagramaBD.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Patient.cs">
+      <DependentUpon>ModelDiagramaBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Permitions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Permitions.Designer.cs">
+      <DependentUpon>Permitions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchPatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchPatient.Designer.cs">
+      <DependentUpon>SearchPatient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateClinicalData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateClinicalData.Designer.cs">
+      <DependentUpon>UpdateClinicalData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdatePatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdatePatient.Designer.cs">
+      <DependentUpon>UpdatePatient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>ModelDiagramaBD.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AddUser.resx">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppointmentList.resx">
+      <DependentUpon>AppointmentList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppointmentInfo.resx">
+      <DependentUpon>AppointmentInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateAppointment.resx">
+      <DependentUpon>CreateAppointment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainAdmin.resx">
+      <DependentUpon>MainAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManagePatient.resx">
+      <DependentUpon>ManagePatient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Permitions.resx">
+      <DependentUpon>Permitions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="SearchPatient.resx">
+      <DependentUpon>SearchPatient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateClinicalData.resx">
+      <DependentUpon>UpdateClinicalData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdatePatient.resx">
+      <DependentUpon>UpdatePatient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="ModelDiagramaBD.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelDiagramaBD.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ModelDiagramaBD.edmx.diagram">
+      <DependentUpon>ModelDiagramaBD.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ModelDiagramaBD.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelDiagramaBD.Context.cs</LastGenOutput>
+      <DependentUpon>ModelDiagramaBD.edmx</DependentUpon>
+    </Content>
+    <Content Include="ModelDiagramaBD.edmx.sql" />
+    <Content Include="ModelDiagramaBD.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelDiagramaBD.cs</LastGenOutput>
+      <DependentUpon>ModelDiagramaBD.edmx</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

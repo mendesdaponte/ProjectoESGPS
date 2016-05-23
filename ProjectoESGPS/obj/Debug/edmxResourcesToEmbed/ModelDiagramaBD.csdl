@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ModelDiagramaBD" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="ModelDiagramaBDContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="UserSet" EntityType="ModelDiagramaBD.User" />
+    <EntitySet Name="AppointementSet" EntityType="ModelDiagramaBD.Appointement" />
+    <EntitySet Name="PatientSet" EntityType="ModelDiagramaBD.Patient" />
+    <AssociationSet Name="PatientAppointement" Association="ModelDiagramaBD.PatientAppointement">
+      <End Role="Patient" EntitySet="PatientSet" />
+      <End Role="Appointement" EntitySet="AppointementSet" />
+    </AssociationSet>
+    <EntitySet Name="CDataSet" EntityType="ModelDiagramaBD.CData" />
+    <AssociationSet Name="PatientClinicalData" Association="ModelDiagramaBD.PatientClinicalData">
+      <End Role="Patient" EntitySet="PatientSet" />
+      <End Role="ClinicalData" EntitySet="CDataSet" />
+    </AssociationSet>
+    <EntitySet Name="FilesSet" EntityType="ModelDiagramaBD.Files" />
+    <AssociationSet Name="PatientFiles" Association="ModelDiagramaBD.PatientFiles">
+      <End Role="Patient" EntitySet="PatientSet" />
+      <End Role="Files" EntitySet="FilesSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Pw" Type="String" Nullable="false" />
+    <Property Name="Email" Type="String" Nullable="false" />
+    <Property Name="Fname" Type="String" Nullable="false" />
+    <Property Name="Lname" Type="String" Nullable="false" />
+    <Property Name="Tipo" Type="String" Nullable="false" />
+    <Property Name="Username" Type="String" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Appointement">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Patient" Relationship="ModelDiagramaBD.PatientAppointement" FromRole="Appointement" ToRole="Patient" />
+    <Property Name="Date" Type="DateTime" Nullable="false" />
+    <Property Name="Diagnosis" Type="String" Nullable="true" />
+    <Property Name="Medication" Type="String" Nullable="true" />
+    <Property Name="Obs" Type="String" Nullable="true" />
+    <Property Name="Doctor" Type="String" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Patient">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fname" Type="String" Nullable="false" />
+    <Property Name="Lname" Type="String" Nullable="false" />
+    <Property Name="SNS" Type="String" Nullable="false" />
+    <Property Name="Address" Type="String" Nullable="false" />
+    <Property Name="Phone" Type="String" Nullable="false" />
+    <Property Name="Gender" Type="String" Nullable="false" />
+    <Property Name="CData" Type="String" Nullable="true" />
+    <NavigationProperty Name="Appointement" Relationship="ModelDiagramaBD.PatientAppointement" FromRole="Patient" ToRole="Appointement" />
+    <Property Name="DateBirth" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="ClinicalData" Relationship="ModelDiagramaBD.PatientClinicalData" FromRole="Patient" ToRole="ClinicalData" />
+    <NavigationProperty Name="Files" Relationship="ModelDiagramaBD.PatientFiles" FromRole="Patient" ToRole="Files" />
+  </EntityType>
+  <Association Name="PatientAppointement">
+    <End Type="ModelDiagramaBD.Patient" Role="Patient" Multiplicity="1" />
+    <End Type="ModelDiagramaBD.Appointement" Role="Appointement" Multiplicity="*" />
+  </Association>
+  <EntityType Name="CData">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Altura" Type="String" Nullable="false" />
+    <Property Name="Peso" Type="String" Nullable="false" />
+    <Property Name="Alergias" Type="String" Nullable="true" />
+    <Property Name="SPO2" Type="String" Nullable="true" />
+    <Property Name="HR" Type="String" Nullable="true" />
+    <Property Name="PS" Type="String" Nullable="true" />
+    <Property Name="Temp" Type="String" Nullable="true" />
+    <NavigationProperty Name="Patient" Relationship="ModelDiagramaBD.PatientClinicalData" FromRole="ClinicalData" ToRole="Patient" />
+  </EntityType>
+  <Association Name="PatientClinicalData">
+    <End Type="ModelDiagramaBD.Patient" Role="Patient" Multiplicity="1" />
+    <End Type="ModelDiagramaBD.CData" Role="ClinicalData" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Files">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Dir" Type="String" Nullable="false" />
+    <NavigationProperty Name="Patient" Relationship="ModelDiagramaBD.PatientFiles" FromRole="Files" ToRole="Patient" />
+  </EntityType>
+  <Association Name="PatientFiles">
+    <End Type="ModelDiagramaBD.Patient" Role="Patient" Multiplicity="1" />
+    <End Type="ModelDiagramaBD.Files" Role="Files" Multiplicity="*" />
+  </Association>
+</Schema>

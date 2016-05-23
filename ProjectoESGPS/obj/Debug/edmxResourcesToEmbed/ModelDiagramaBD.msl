@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelDiagramaBDStoreContainer" CdmEntityContainer="ModelDiagramaBDContainer">
+    <EntitySetMapping Name="UserSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelDiagramaBD.User)">
+        <MappingFragment StoreEntitySet="UserSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Pw" ColumnName="Pw" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Fname" ColumnName="Fname" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AppointementSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelDiagramaBD.Appointement)">
+        <MappingFragment StoreEntitySet="AppointementSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Diagnosis" ColumnName="Diagnosis" />
+          <ScalarProperty Name="Medication" ColumnName="Medication" />
+          <ScalarProperty Name="Obs" ColumnName="Obs" />
+          <ScalarProperty Name="Doctor" ColumnName="Doctor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PatientSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelDiagramaBD.Patient)">
+        <MappingFragment StoreEntitySet="PatientSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Fname" ColumnName="Fname" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+          <ScalarProperty Name="SNS" ColumnName="SNS" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="CData" ColumnName="CData" />
+          <ScalarProperty Name="DateBirth" ColumnName="DateBirth" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CDataSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelDiagramaBD.CData)">
+        <MappingFragment StoreEntitySet="CDataSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Altura" ColumnName="Altura" />
+          <ScalarProperty Name="Peso" ColumnName="Peso" />
+          <ScalarProperty Name="Alergias" ColumnName="Alergias" />
+          <ScalarProperty Name="SPO2" ColumnName="SPO2" />
+          <ScalarProperty Name="HR" ColumnName="HR" />
+          <ScalarProperty Name="PS" ColumnName="PS" />
+          <ScalarProperty Name="Temp" ColumnName="Temp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FilesSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelDiagramaBD.Files)">
+        <MappingFragment StoreEntitySet="FilesSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Dir" ColumnName="Dir" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="PatientAppointement" TypeName="ModelDiagramaBD.PatientAppointement" StoreEntitySet="AppointementSet">
+      <EndProperty Name="Patient">
+        <ScalarProperty Name="Id" ColumnName="Patient_Id" />
+      </EndProperty>
+      <EndProperty Name="Appointement">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PatientClinicalData" TypeName="ModelDiagramaBD.PatientClinicalData" StoreEntitySet="CDataSet">
+      <EndProperty Name="Patient">
+        <ScalarProperty Name="Id" ColumnName="Patient_Id" />
+      </EndProperty>
+      <EndProperty Name="ClinicalData">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PatientFiles" TypeName="ModelDiagramaBD.PatientFiles" StoreEntitySet="FilesSet">
+      <EndProperty Name="Patient">
+        <ScalarProperty Name="Id" ColumnName="Patient_Id" />
+      </EndProperty>
+      <EndProperty Name="Files">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

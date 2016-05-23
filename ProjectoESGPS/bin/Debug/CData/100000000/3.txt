@@ -1,0 +1,500 @@
+        public bool VerificarAlertas(Utente utenteBD, string valor, string medicao, DateTime data, ModelProjetoContainer contextx)
+        {
+
+            ModelProjetoContainer context = contextx;
+
+            //Para o Blood Pressure o 60 é do primeiro numero ou segundo?
+            if (medicao == "Blood Pressure")
+            {
+                string[] bpArray = valor.Split('-');
+                int bpD = Convert.ToInt32(bpArray[0]);
+                int bpS = Convert.ToInt32(bpArray[1]);
+
+                if (bpD >= 90 && bpD <= 180 && bpS >= 90 && bpS <= 180)
+                {
+                    return false;
+                }
+
+                else if (bpD < 60 || bpS < 60)
+                {
+                    Aviso alerta = new Aviso();
+
+                    alerta.Tipo = "ECA";
+                    alerta.MedicaoTipo = "BP";
+                    alerta.Data = data;
+                    alerta.Utente = utenteBD;
+
+                    context.AvisoSet.Add(alerta);
+                    context.SaveChanges();
+
+                    return true;
+                }
+
+                else
+                {
+
+                    List<Medicoes> listaBP = utenteBD.Medicoes.Where(i => i.Nome == "Blood Pressure" && i.Data >= data.AddHours(-2) && i.Data <= data).OrderByDescending(i => i.Data).ToList();
+                    List<Medicoes> listaEAC = listaBP.Where(i => i.Data >= data.AddHours(-1)).OrderByDescending(i => i.Data).ToList();
+                    List<Medicoes> listaEAI = listaBP.Where(i => i.Data >= data.AddMinutes(-30)).OrderByDescending(i => i.Data).ToList();
+                    List<Medicoes> listaECC = listaBP.Where(i => i.Data >= data.AddMinutes(-10)).OrderByDescending(i => i.Data).ToList();
+
+                    //List<Medicoes> listaEAC = new List<Medicoes>();
+                    //List<Medicoes> listaEAI = new List<Medicoes>();
+                    //List<Medicoes> listaECC = new List<Medicoes>();
+                    //listaBP.Where(i && if.va<90)
+                    //foreach (Medicoes elem in listaBP)
+                    //{
+                    //    if (elem.Data >= data.AddHours(-1))
+                    //    {
+                    //        listaEAC.Add(elem);
+                    //        listaEAI.Add(elem);
+                    //        listaECC.Add(elem);
+                    //    }
+                    //    else if (elem.Data >= data.AddMinutes(-30))
+                    //    {
+                    //        listaEAC.Add(elem);
+                    //        listaEAI.Add(elem);
+                    //    }
+                    //    else if (elem.Data >= data.AddMinutes(-10))
+                    //    {
+                    //        listaEAC.Add(elem);
+                    //    }
+                    //}
+
+                    //verificacao ECC
+                    bool verificao = false;
+                    if (listaECC[listaECC.Count() - 1].Data.AddMinutes(55) < listaECC[0].Data)
+                    {
+                        foreach (Medicoes elem in listaECC)
+                        {
+                            verificao = true;
+                            if (bpD >= 90 && bpS >= 90)
+                            {
+                                verificao = false;
+                                break;
+                            }
+                        }
+                    }
+                    //criar ECC
+                    if (verificao == true)
+                    {
+                        Aviso alerta = new Aviso();
+
+                        alerta.Tipo = "ECC";
+                        alerta.MedicaoTipo = "BP";
+                        alerta.Data = data;
+                        alerta.Utente = utenteBD;
+
+                        context.AvisoSet.Add(alerta);
+                        context.SaveChanges();
+
+                        return true;
+                    }
+                    //verificacao ECI
+                    int contador = 0;
+                    int contadorVer = 0;
+                    if (listaBP[listaBP.Count() - 1].Data.AddMinutes(115) < listaBP[0].Data)
+                    {
+                        foreach (Medicoes elem in listaBP)
+                        {
+                            contador++;
+
+                            if (bpS <= 90 || bpD <= 90)
+                            {
+                                contadorVer++;
+                            }
+                        }
+                    }
+                    //criar ECI
+                    if (contadorVer > (contador / 2))
+                    {
+                        Aviso alerta = new Aviso();
+
+                        alerta.Tipo = "ECI";
+                        alerta.MedicaoTipo = "BP";
+                        alerta.Data = data;
+                        alerta.Utente = utenteBD;
+
+                        context.AvisoSet.Add(alerta);
+                        context.SaveChanges();
+
+                        return true;
+                    }
+                    //verificacao EAC
+                    verificao = false;
+                    if (listaEAC[listaEAC.Count() - 1].Data.AddMinutes(9) < listaEAC[0].Data)
+                    {
+                        foreach (Medicoes elem in listaEAC)
+                        {
+                            verificao = true;
+                            if (bpS >= 90 || bpD >= 90)
+                            {
+                                verificao = false;
+                                break;
+                            }
+                        }
+                    }
+                    //criar EAC
+                    if (verificao == true)
+                    {
+                        Aviso alerta = new Aviso();
+
+                        alerta.Tipo = "EAC";
+                        alerta.MedicaoTipo = "BP";
+                        alerta.Data = data;
+                        alerta.Utente = utenteBD;
+
+                        context.AvisoSet.Add(alerta);
+                        context.SaveChanges();
+
+                        return true;
+                    }
+                    //verificacao EAI
+                    contador = 0;
+                    contadorVer = 0;
+                    if (listaEAI[listaECC.Count() - 1].Data.AddMinutes(29) < listaEAI[0].Data)
+                    {
+                        foreach (Medicoes elem in listaEAI)
+                        {
+                            contador++;
+
+                            if (bpS <= 90 || bpD <= 90)
+                            {
+                                contadorVer++;
+                            }
+                        }
+                    }
+                    //criar EAI
+                    if (contadorVer > (contador / 3))
+                    {
+                        Aviso alerta = new Aviso();
+
+                        alerta.Tipo = "EAI";
+                        alerta.MedicaoTipo = "BP";
+                        alerta.Data = data;
+                        alerta.Utente = utenteBD;
+
+                        context.AvisoSet.Add(alerta);
+                        context.SaveChanges();
+
+                        return true;
+                    }
+                }
+
+            }
+
+            else if (medicao == "Heart Rate")
+            {
+                if (Convert.ToInt32(valor) >= 90)
+                {
+                    return false;
+                }
+
+                else if (Convert.ToInt32(valor) < 60)
+                {
+                    Aviso alerta = new Aviso();
+
+                    alerta.Tipo = "ECA";
+                    alerta.MedicaoTipo = "HR";
+                    alerta.Data = data;
+                    alerta.Utente = utenteBD;
+
+                    context.AvisoSet.Add(alerta);
+                    context.SaveChanges();
+
+                    return true;
+                }
+
+                else
+                {
+
+                    List<Medicoes> listaHR = utenteBD.Medicoes.Where(i => i.Nome == "Heart Rate" && i.Data >= data.AddHours(-2) && i.Data <= data).OrderByDescending(i => i.Data).ToList();
+                    List<Medicoes> listaEAC = listaHR.Where(i => i.Data >= data.AddHours(-1)).OrderByDescending(i => i.Data).ToList();
+                    List<Medicoes> listaEAI = listaHR.Where(i => i.Data >= data.AddMinutes(-30)).OrderByDescending(i => i.Data).ToList();
+                    List<Medicoes> listaECC = listaHR.Where(i => i.Data >= data.AddMinutes(-10)).OrderByDescending(i => i.Data).ToList();
+
+                    //List<Medicoes> listaEAC = new List<Medicoes>();
+                    //List<Medicoes> listaEAI = new List<Medicoes>();
+                    //List<Medicoes> listaECC = new List<Medicoes>();
+
+                    //foreach (Medicoes elem in listaHR)
+                    //{                        
+                    //    if (elem.Data >= data.AddHours(-1))
+                    //    {
+                    //        listaEAC.Add(elem);
+                    //        listaEAI.Add(elem);
+                    //        listaECC.Add(elem);
+                    //    }
+                    //    else if (elem.Data >= data.AddMinutes(-30))
+                    //    {
+                    //        listaEAC.Add(elem);
+                    //        listaEAI.Add(elem);
+                    //    }
+                    //    else if (elem.Data >= data.AddMinutes(-10))
+                    //    {
+                    //        listaEAC.Add(elem);
+                    //    }
+                    //}
+
+                    //verificacao ECC
+                    bool verificao = false;
+                    if (listaECC[listaECC.Count() - 1].Data.AddMinutes(55) < listaECC[0].Data)
+                    {
+                        foreach (Medicoes elem in listaECC)
+                        {
+                            verificao = true;
+                            if (Convert.ToInt32(elem.Valor) >= 90)
+                            {
+                                verificao = false;
+                                break;
+                            }
+                        }
+                    }
+                    //criar ECC
+                    if (verificao == true)
+                    {
+                        Aviso alerta = new Aviso();
+
+                        alerta.Tipo = "ECC";
+                        alerta.MedicaoTipo = "HR";
+                        alerta.Data = data;
+                        alerta.Utente = utenteBD;
+
+                        context.AvisoSet.Add(alerta);
+                        context.SaveChanges();
+
+                        return true;
+                    }
+                    //verificacao ECI
+                    int contador = 0;
+                    int contadorVer = 0;
+                    if (listaHR[listaHR.Count() - 1].Data.AddMinutes(115) < listaHR[0].Data)
+                    {
+                        foreach (Medicoes elem in listaHR)
+                        {
+                            contador++;
+
+                            if (Convert.ToInt32(elem.Valor) <= 90)
+                            {
+                                contadorVer++;
+                            }
+                        }
+                    }
+                    //criar ECI
+                    if (contadorVer > (contador / 2))
+                    {
+                        Aviso alerta = new Aviso();
+
+                        alerta.Tipo = "ECI";
+                        alerta.MedicaoTipo = "HR";
+                        alerta.Data = data;
+                        alerta.Utente = utenteBD;
+
+                        context.AvisoSet.Add(alerta);
+                        context.SaveChanges();
+
+                        return true;
+                    }
+                    //verificacao EAC
+                    verificao = false;
+                    if (listaEAC[listaEAC.Count() - 1].Data.AddMinutes(9) < listaEAC[0].Data)
+                    {
+                        foreach (Medicoes elem in listaEAC)
+                        {
+                            verificao = true;
+                            if (Convert.ToInt32(elem.Valor) >= 90)
+                            {
+                                verificao = false;
+                                break;
+                            }
+                        }
+                    }
+                    //criar EAC
+                    if (verificao == true)
+                    {
+                        Aviso alerta = new Aviso();
+
+                        alerta.Tipo = "EAC";
+                        alerta.MedicaoTipo = "HR";
+                        alerta.Data = data;
+                        alerta.Utente = utenteBD;
+
+                        context.AvisoSet.Add(alerta);
+                        context.SaveChanges();
+
+                        return true;
+                    }
+                    //verificacao EAI
+                    contador = 0;
+                    contadorVer = 0;
+                    if (listaEAI[listaEAI.Count() - 1].Data.AddMinutes(29) < listaEAI[0].Data)
+                    {
+                        foreach (Medicoes elem in listaEAI)
+                        {
+                            contador++;
+
+                            if (Convert.ToInt32(elem.Valor) <= 90)
+                            {
+                                contadorVer++;
+                            }
+                        }
+                    }
+                    //criar EAI
+                    if (contadorVer > (contador / 3))
+                    {
+                        Aviso alerta = new Aviso();
+
+                        alerta.Tipo = "EAI";
+                        alerta.MedicaoTipo = "HR";
+                        alerta.Data = data;
+                        alerta.Utente = utenteBD;
+
+                        context.AvisoSet.Add(alerta);
+                        context.SaveChanges();
+
+                        return true;
+                    }
+                }
+            }
+
+            else if (medicao == "Oxygen Saturation")
+            {
+                if (Convert.ToInt32(valor) >= 60 && Convert.ToInt32(valor) <= 120)
+                {
+                    return false;
+                }
+
+                else if (Convert.ToInt32(valor) < 30 || Convert.ToInt32(valor) > 180)
+                {
+                    Aviso alerta = new Aviso();
+
+                    alerta.Tipo = "ECA";
+                    alerta.MedicaoTipo = "OS";
+                    alerta.Data = data;
+                    alerta.Utente = utenteBD;
+
+                    context.AvisoSet.Add(alerta);
+                    context.SaveChanges();
+
+                    return true;
+                }
+
+                else
+                {
+
+                    List<Medicoes> listaOS = utenteBD.Medicoes.Where(i => i.Nome == "Oxygen Saturation" && i.Data >= data.AddHours(-2) && i.Data <= data).OrderByDescending(i => i.Data).ToList();
+                    List<Medicoes> listaEAI = listaOS.Where(i => i.Data >= data.AddMinutes(-30)).OrderByDescending(i => i.Data).ToList();
+                    List<Medicoes> listaECC = listaOS.Where(i => i.Data >= data.AddMinutes(-10)).OrderByDescending(i => i.Data).ToList();
+
+
+                    //List<Medicoes> listaEAI = new List<Medicoes>();
+                    //List<Medicoes> listaECC = new List<Medicoes>();
+
+                    //foreach (Medicoes elem in listaOS)
+                    //{
+                    //    if (elem.Data >= data.AddHours(-1))
+                    //    {                            
+                    //        listaEAI.Add(elem);
+                    //        listaECC.Add(elem);
+                    //    }
+                    //    else if (elem.Data >= data.AddMinutes(-30))
+                    //    {
+                    //        listaEAI.Add(elem);
+                    //    }
+                    //}
+
+                    //verificacao ECC
+                    bool verificao = false;
+                    if (listaECC[listaECC.Count() - 1].Data.AddMinutes(55) < listaECC[0].Data)
+                    {
+                        foreach (Medicoes elem in listaECC)
+                        {
+                            verificao = true;
+                            if (Convert.ToInt32(elem.Valor) >= 60)
+                            {
+                                verificao = false;
+                                break;
+                            }
+                        }
+                    }
+                    //criar ECC
+                    if (verificao == true)
+                    {
+                        Aviso alerta = new Aviso();
+
+                        alerta.Tipo = "ECC";
+                        alerta.MedicaoTipo = "OS";
+                        alerta.Data = data;
+                        alerta.Utente = utenteBD;
+
+                        context.AvisoSet.Add(alerta);
+                        context.SaveChanges();
+
+                        return true;
+                    }
+                    //verificacao ECI
+                    int contador = 0;
+                    int contadorVer = 0;
+                    if (listaOS[listaOS.Count() - 1].Data.AddMinutes(115) < listaOS[0].Data)
+                    {
+                        foreach (Medicoes elem in listaOS)
+                        {
+                            contador++;
+
+                            if (Convert.ToInt32(elem.Valor) <= 60)
+                            {
+                                contadorVer++;
+                            }
+                        }
+                    }
+                    //criar ECI
+                    if (contadorVer > (contador / 2))
+                    {
+                        Aviso alerta = new Aviso();
+
+                        alerta.Tipo = "ECI";
+                        alerta.MedicaoTipo = "OS";
+                        alerta.Data = data;
+                        alerta.Utente = utenteBD;
+
+                        context.AvisoSet.Add(alerta);
+                        context.SaveChanges();
+
+                        return true;
+                    }
+                    //verificacao EAI
+                    contador = 0;
+                    contadorVer = 0;
+                    if (listaEAI[listaEAI.Count() - 1].Data.AddMinutes(29) < listaEAI[0].Data)
+                    {
+                        foreach (Medicoes elem in listaEAI)
+                        {
+                            contador++;
+
+                            if (Convert.ToInt32(elem.Valor) <= 60)
+                            {
+                                contadorVer++;
+                            }
+                        }
+                    }
+                        //criar EAI
+                        if (contadorVer > (contador / 3))
+                        {
+                            Aviso alerta = new Aviso();
+
+                            alerta.Tipo = "EAI";
+                            alerta.MedicaoTipo = "OS";
+                            alerta.Data = data;
+                            alerta.Utente = utenteBD;
+
+                            context.AvisoSet.Add(alerta);
+                            context.SaveChanges();
+                        
+                            return true;
+                        }
+                    }
+                }
+            return false;
+        }
+    }
+}

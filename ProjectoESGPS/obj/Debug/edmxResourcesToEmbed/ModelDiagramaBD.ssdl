@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ModelDiagramaBD.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ModelDiagramaBDStoreContainer">
+    <EntitySet Name="UserSet" EntityType="ModelDiagramaBD.Store.UserSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AppointementSet" EntityType="ModelDiagramaBD.Store.AppointementSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PatientSet" EntityType="ModelDiagramaBD.Store.PatientSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CDataSet" EntityType="ModelDiagramaBD.Store.CDataSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FilesSet" EntityType="ModelDiagramaBD.Store.FilesSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="PatientAppointement" Association="ModelDiagramaBD.Store.PatientAppointement">
+      <End Role="Patient" EntitySet="PatientSet" />
+      <End Role="Appointement" EntitySet="AppointementSet" />
+    </AssociationSet>
+    <AssociationSet Name="PatientClinicalData" Association="ModelDiagramaBD.Store.PatientClinicalData">
+      <End Role="Patient" EntitySet="PatientSet" />
+      <End Role="ClinicalData" EntitySet="CDataSet" />
+    </AssociationSet>
+    <AssociationSet Name="PatientFiles" Association="ModelDiagramaBD.Store.PatientFiles">
+      <End Role="Patient" EntitySet="PatientSet" />
+      <End Role="Files" EntitySet="FilesSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="UserSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Pw" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Fname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Lname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Tipo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AppointementSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Diagnosis" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Medication" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Obs" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Doctor" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Patient_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PatientSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Lname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SNS" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Gender" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CData" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="DateBirth" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CDataSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Altura" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Peso" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Alergias" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="SPO2" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="HR" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="PS" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Temp" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Patient_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FilesSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Dir" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Patient_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="PatientAppointement">
+    <End Role="Patient" Type="ModelDiagramaBD.Store.PatientSet" Multiplicity="1" />
+    <End Role="Appointement" Type="ModelDiagramaBD.Store.AppointementSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Appointement">
+        <PropertyRef Name="Patient_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PatientClinicalData">
+    <End Role="Patient" Type="ModelDiagramaBD.Store.PatientSet" Multiplicity="1" />
+    <End Role="ClinicalData" Type="ModelDiagramaBD.Store.CDataSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ClinicalData">
+        <PropertyRef Name="Patient_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PatientFiles">
+    <End Role="Patient" Type="ModelDiagramaBD.Store.PatientSet" Multiplicity="1" />
+    <End Role="Files" Type="ModelDiagramaBD.Store.FilesSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Files">
+        <PropertyRef Name="Patient_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
