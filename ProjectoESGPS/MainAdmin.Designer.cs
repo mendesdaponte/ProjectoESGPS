@@ -82,6 +82,7 @@
             this.Controls.Add(this.bt_logout);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "MainAdmin";
             this.Text = "MainAdmin";
             this.ResumeLayout(false);

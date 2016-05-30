@@ -288,6 +288,7 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "UpdateClinicalData";
             this.Text = "UpdateClinicalData";
             this.ResumeLayout(false);
