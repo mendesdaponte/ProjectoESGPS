@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lb_username = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.tb_pw = new System.Windows.Forms.TextBox();
             this.tb_user = new System.Windows.Forms.TextBox();
@@ -45,30 +43,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.lb_username = new System.Windows.Forms.Label();
+            this.bt_logout = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // lb_username
-            // 
-            this.lb_username.AutoSize = true;
-            this.lb_username.Location = new System.Drawing.Point(374, 9);
-            this.lb_username.Name = "lb_username";
-            this.lb_username.Size = new System.Drawing.Size(55, 13);
-            this.lb_username.TabIndex = 5;
-            this.lb_username.Text = "Username";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(372, 25);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(57, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Logout";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(12, 12);
+            this.button2.Location = new System.Drawing.Point(12, 9);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(57, 23);
             this.button2.TabIndex = 6;
@@ -198,11 +179,32 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // lb_username
+            // 
+            this.lb_username.AutoSize = true;
+            this.lb_username.Location = new System.Drawing.Point(331, 9);
+            this.lb_username.Name = "lb_username";
+            this.lb_username.Size = new System.Drawing.Size(85, 13);
+            this.lb_username.TabIndex = 23;
+            this.lb_username.Text = "Pedro Casqueiro";
+            // 
+            // bt_logout
+            // 
+            this.bt_logout.Location = new System.Drawing.Point(334, 25);
+            this.bt_logout.Name = "bt_logout";
+            this.bt_logout.Size = new System.Drawing.Size(94, 23);
+            this.bt_logout.TabIndex = 22;
+            this.bt_logout.Text = "Logout";
+            this.bt_logout.UseVisualStyleBackColor = true;
+            this.bt_logout.Click += new System.EventHandler(this.bt_logout_Click);
+            // 
             // AddUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(441, 357);
+            this.Controls.Add(this.lb_username);
+            this.Controls.Add(this.bt_logout);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label6);
@@ -218,8 +220,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.lb_username);
-            this.Controls.Add(this.button1);
             this.Name = "AddUser";
             this.Text = "AddUser";
             this.ResumeLayout(false);
@@ -228,9 +228,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lb_username;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox tb_pw;
         private System.Windows.Forms.TextBox tb_user;
@@ -246,5 +243,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label lb_username;
+        private System.Windows.Forms.Button bt_logout;
     }
 }

@@ -26,10 +26,16 @@ namespace ProjectoESGPS
                 button3.Hide();
             }
 
+            lb_username.TextAlign = ContentAlignment.MiddleRight;
+            lb_username.AutoSize = false;
             lb_username.Text = utilizador.Fname + " " + utilizador.Lname;
+
+            bt_logout.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            lb_username.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void bt_logout_Click(object sender, EventArgs e)
         {
             Login login = new Login();
             login.Show();

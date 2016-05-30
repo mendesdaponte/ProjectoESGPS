@@ -28,33 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lb_username = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.lb_username = new System.Windows.Forms.Label();
+            this.bt_logout = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // lb_username
-            // 
-            this.lb_username.AutoSize = true;
-            this.lb_username.Location = new System.Drawing.Point(354, 9);
-            this.lb_username.Name = "lb_username";
-            this.lb_username.Size = new System.Drawing.Size(55, 13);
-            this.lb_username.TabIndex = 3;
-            this.lb_username.Text = "Username";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(352, 25);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(57, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Logout";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -111,18 +92,37 @@
             this.listView1.DoubleClick += new System.EventHandler(this.listView1_DoubleClick);
             this.listView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseClick);
             // 
+            // lb_username
+            // 
+            this.lb_username.AutoSize = true;
+            this.lb_username.Location = new System.Drawing.Point(313, 9);
+            this.lb_username.Name = "lb_username";
+            this.lb_username.Size = new System.Drawing.Size(85, 13);
+            this.lb_username.TabIndex = 13;
+            this.lb_username.Text = "Pedro Casqueiro";
+            // 
+            // bt_logout
+            // 
+            this.bt_logout.Location = new System.Drawing.Point(316, 25);
+            this.bt_logout.Name = "bt_logout";
+            this.bt_logout.Size = new System.Drawing.Size(94, 23);
+            this.bt_logout.TabIndex = 12;
+            this.bt_logout.Text = "Logout";
+            this.bt_logout.UseVisualStyleBackColor = true;
+            this.bt_logout.Click += new System.EventHandler(this.bt_logout_Click);
+            // 
             // Permitions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(421, 360);
+            this.Controls.Add(this.lb_username);
+            this.Controls.Add(this.bt_logout);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.lb_username);
-            this.Controls.Add(this.button1);
             this.Name = "Permitions";
             this.Text = "Permitions";
             this.ResumeLayout(false);
@@ -131,13 +131,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lb_username;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Label lb_username;
+        private System.Windows.Forms.Button bt_logout;
     }
 }

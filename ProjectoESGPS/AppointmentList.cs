@@ -20,7 +20,13 @@ namespace ProjectoESGPS
 
             String user = ProjectoESGPS.Properties.Settings.Default.User;
             User utilizador = context.UserSet.Where(i => i.Username == user).FirstOrDefault();
+
+            lb_username.TextAlign = ContentAlignment.MiddleRight;
+            lb_username.AutoSize = false;
             lb_username.Text = utilizador.Fname + " " + utilizador.Lname;
+
+            bt_logout.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            lb_username.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
 
             List<Appointement> allListaConsultas = context.AppointementSet.ToList();
 
@@ -30,6 +36,7 @@ namespace ProjectoESGPS
                 linha.SubItems.Add(item.Patient.SNS.ToString());
                 linha.SubItems.Add(item.Patient.Fname + " " + item.Patient.Lname);
                 linha.SubItems.Add(item.Doctor);
+                linha.SubItems.Add(item.Date.ToShortDateString());
 
                 
 
@@ -42,13 +49,6 @@ namespace ProjectoESGPS
                     listView1.Items.Add(linha).BackColor = Color.Blue;
                 }
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Login login = new Login();
-            login.Show();
-            this.Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -118,9 +118,11 @@ namespace ProjectoESGPS
             this.Hide();
         }
 
-        private void lb_username_Click(object sender, EventArgs e)
+        private void bt_logout_Click(object sender, EventArgs e)
         {
-
+            Login login = new Login();
+            login.Show();
+            this.Hide();
         }
     }
 }

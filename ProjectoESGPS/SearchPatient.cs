@@ -20,7 +20,13 @@ namespace ProjectoESGPS
 
             String user = ProjectoESGPS.Properties.Settings.Default.User;
             User utilizador = context.UserSet.Where(i => i.Username == user).FirstOrDefault();
+
+            lb_username.TextAlign = ContentAlignment.MiddleRight;
+            lb_username.AutoSize = false;
             lb_username.Text = utilizador.Fname + " " + utilizador.Lname;
+
+            bt_logout.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            lb_username.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
 
             ActualizarLista();
         }
@@ -55,12 +61,6 @@ namespace ProjectoESGPS
                 listView1.Items.Add(linha);
             }
 
-        }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Login login = new Login();
-            login.Show();
-            this.Hide();
         }
 
         private static bool IsNumeric(string data)
@@ -133,6 +133,13 @@ namespace ProjectoESGPS
 
             ManagePatient managePatient = new ManagePatient();
             managePatient.Show();
+            this.Hide();
+        }
+
+        private void bt_logout_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
             this.Hide();
         }
     }

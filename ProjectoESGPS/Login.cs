@@ -308,5 +308,21 @@ namespace ProjectoESGPS
 
             MessageBox.Show("Appointments criados com sucesso", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
+
+        private void tb_user_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                bt1_Click(this, new EventArgs());
+            }
+        }
+
+        private void tb_pw_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                bt1_Click(this, new EventArgs());
+            }
+        }
     }
 }
