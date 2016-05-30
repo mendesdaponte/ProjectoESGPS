@@ -73,6 +73,7 @@
             this.tb_user.Name = "tb_user";
             this.tb_user.Size = new System.Drawing.Size(193, 20);
             this.tb_user.TabIndex = 3;
+            this.tb_user.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_user_KeyDown);
             // 
             // tb_pw
             // 
@@ -80,6 +81,7 @@
             this.tb_pw.Name = "tb_pw";
             this.tb_pw.Size = new System.Drawing.Size(193, 20);
             this.tb_pw.TabIndex = 4;
+            this.tb_pw.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_pw_KeyDown);
             // 
             // bt1
             // 

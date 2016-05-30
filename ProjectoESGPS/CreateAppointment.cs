@@ -22,7 +22,13 @@ namespace ProjectoESGPS
 
             String user = ProjectoESGPS.Properties.Settings.Default.User;
             User utilizador = context.UserSet.Where(i => i.Username == user).FirstOrDefault();
+
+            lb_username.TextAlign = ContentAlignment.MiddleRight;
+            lb_username.AutoSize = false;
             lb_username.Text = utilizador.Fname + " " + utilizador.Lname;
+
+            bt_logout.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            lb_username.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
 
             Patient paciente = context.PatientSet.Where(i => i.SNS == snsPaciente).FirstOrDefault();
             lb_sns.Text = paciente.SNS.ToString();
@@ -39,13 +45,6 @@ namespace ProjectoESGPS
         {
             ManagePatient managePatient = new ManagePatient();
             managePatient.Show();
-            this.Hide();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Login login = new Login();
-            login.Show();
             this.Hide();
         }
 
@@ -66,6 +65,13 @@ namespace ProjectoESGPS
             }
             else
                 MessageBox.Show("Data invalida", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+
+        private void bt_logout_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Hide();
         }
     }
 }
