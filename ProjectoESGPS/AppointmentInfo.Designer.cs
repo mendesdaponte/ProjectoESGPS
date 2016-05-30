@@ -211,6 +211,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "AppointmentInfo";
             this.Text = "AppointmentInfo";
             this.ResumeLayout(false);

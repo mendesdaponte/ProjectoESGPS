@@ -161,7 +161,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(350, 232);
+            this.button3.Location = new System.Drawing.Point(350, 283);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(79, 43);
             this.button3.TabIndex = 20;
@@ -220,6 +220,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "AddUser";
             this.Text = "AddUser";
             this.ResumeLayout(false);

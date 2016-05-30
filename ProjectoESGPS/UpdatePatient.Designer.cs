@@ -227,6 +227,7 @@
             this.Controls.Add(this.tb_sns);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "UpdatePatient";
             this.Text = "UpdatePatient";
             this.ResumeLayout(false);
