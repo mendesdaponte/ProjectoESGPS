@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddUser));
             this.button2 = new System.Windows.Forms.Button();
             this.tb_pw = new System.Windows.Forms.TextBox();
             this.tb_user = new System.Windows.Forms.TextBox();
@@ -49,11 +50,12 @@
             // 
             // button2
             // 
+            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button2.Location = new System.Drawing.Point(12, 9);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(57, 23);
+            this.button2.Size = new System.Drawing.Size(36, 36);
             this.button2.TabIndex = 6;
-            this.button2.Text = "Back";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 

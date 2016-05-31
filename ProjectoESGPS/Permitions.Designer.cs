@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Permitions));
             this.button2 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button3 = new System.Windows.Forms.Button();
@@ -39,11 +40,12 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(12, 12);
+            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.Location = new System.Drawing.Point(12, 9);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(57, 23);
+            this.button2.Size = new System.Drawing.Size(36, 36);
             this.button2.TabIndex = 4;
-            this.button2.Text = "Back";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -89,9 +91,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listView1.FullRowSelect = true;
-            this.listView1.Location = new System.Drawing.Point(12, 41);
+            this.listView1.Location = new System.Drawing.Point(12, 51);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(251, 303);
+            this.listView1.Size = new System.Drawing.Size(251, 293);
             this.listView1.TabIndex = 9;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.List;
