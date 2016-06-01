@@ -1,0 +1,170 @@
+Consulta ( Cenário Principal - Doctor )
+
+Pré Condição > O Doutor é um utilizador válido no sistema
+
+Descrição > 1. O caso de utilização começa quando o doutor selecciona a opção pesquisar , onde vai surgir
+uma janela com as horas da consulta ao longo do dia.
+	    2. De seguida o Doutor selecciona a hora da consulta que pretende.
+	    3. Abre-se uma janela onde vai se poder registar os sintomas e diagnostico de um determinado 
+paciente, e se necessário passar medicação.
+	    4. O Doutor confirma tudo o que registou.
+
+Pós Condição > Os registos seram guardados nessa data de consulta
+
+Consulta ( Cenário Alternativo - Doctor )
+
+Pré Condição > o Doutor é um utilizador válido no sistema
+
+Descrição > 1. O caso de utilização começa quando o doutor selecciona a opção pesquisar , onde vai surgir
+uma janela com as horas da consulta ao longo do dia.
+	    2. De seguida o Doutor selecciona a hora da consulta que pretende.
+		a) O doutor percebe que errou na hora da consulta e volta atrás para escolher a hora certa.
+	    3. Abre-se uma janela onde vai se poder registar os sintomas e diagnostico de um determinado 
+paciente, e se necessário passar medicação.
+	    4. O doutor confirma tudo o que registou.
+
+Pós Condição > Os registos serão guardados nessa data de consulta.
+
+
+Consulta ( Cenário Principal - Nurse )
+
+Pré Condição > A nurse é um utilizador válido no sistema
+
+Descrição > 1. O caso de utilização começa quando a enfermeira selecciona a opção pesquisar , onde vai surgir
+uma janela com as horas da consulta ao longo do dia.
+	    2. De seguida a enfermeira selecciona a hora da consulta que pretende.
+	    3. Abre-se uma janela a enfermeira vai poder ver o tipo de medicação do utente.
+	   
+Pós Condição > Só pode ver a Medicação
+
+Consulta ( Cenário Alternativo - Nurse )
+
+Pré Condição > A nurse é um utilizador válido no sistema
+
+Descrição > 1. O caso de utilização começa quando a enfermeira selecciona a opção pesquisar , onde vai surgir
+uma janela com as horas da consulta ao longo do dia.
+	    2. De seguida a enfermeira selecciona a hora da consulta que pretende.
+		a) A enfermeira percebe que errou na hora da consulta e volta atrás para escolher a hora certa.
+	    3. Abre-se uma janela a enfermeira vai poder ver o tipo de medicação do utente.
+	   
+Pós Condição > Só pode ver a Medicação
+
+Registar/Procurar Paciente ( Cenário Principal - Search )
+
+Pré Condição > (o/a) Atendente/Nurse/Doctor é um utilizador válido no sistema
+
+Descrição  > 1. O caso de utilização começa quando o atendente  selecciona a opção pesquisar , onde vai aparecer uma
+lista de pacientes e clica-se sobre o paciente pretendido.
+	     2. De seguida abre uma janela com os dados do Paciente. 
+	     3. Se pretender alterar/apagar os dados de Registo do Paciente , altera-se/apaga-se os dados.
+	     4. Clica-se no "Update Patient" para os novos dados ficarem registados.
+
+Pós Condição > A lista dos Pacientes é atualizada  
+
+Registar/Procurar Paciente ( Cenário Alternativo - Search )
+
+Pré Condição > (o/a) Atendente/Nurse/Doctor é um utilizador válido no sistema
+
+Descrição  > 1. O caso de utilização começa quando o atendente  selecciona a opção pesquisar , onde vai aparecer uma
+lista de pacientes e clica-se sobre o paciente pretendido.
+	     2. De seguida abre uma janela com os dados do Paciente. 
+	     3. Se pretender alterar/apagar os dados de Registo do Paciente , altera-se/apaga-se os dados.
+	     4. Clica-se no "Update Patient" para os novos dados ficarem registados.
+		a) Se os dados alterados forem iguais a uns já existentes , surge uma mensagem de erro a avisar , para alterar Dados (ex: numero SNS)
+
+Pós Condição > A lista dos Pacientes é atualizada
+
+Registar/Procurar Paciente ( Cenário Principal - Register appointment )
+
+Pré Condição > (o/a) Atendente/Nurse/Doctor é um utilizador válido no sistema
+
+Descrição  > 1. O caso de utilização começa quando o atendente selecciona a opção "Register appointment ".
+	     2. Abre-se uma janela onde se seleciona a Data da Consulta.
+	     3. Depois clica-se no botão "Register Consultation " e a Consulta é registada.
+
+Pós Condição > A Consulta é marcada numa determinada data.
+
+Registar/Procurar Paciente ( Cenário Alternativo - Register appointment )
+
+Pré Condição > (o/a) Atendente/Nurse/Doctor é um utilizador válido no sistema
+
+Descrição  > 1. O caso de utilização começa quando o atendente selecciona a opção "Register appointment ".
+	     2. Abre-se uma janela onde se seleciona a Data da Consulta.
+		a)a data já esta ocupada por outra consulta , não vai ser permitido avancar 
+, monstrando que a data já esta ocupada , pedindo para mudar de data.
+	     3. Depois clica-se no botão "Register Consultation " e a Consulta é registada.
+
+Pós Condição > A Consulta é marcada numa determinada data.
+
+
+Registar/Procurar Paciente ( Cenário Principal - Register Patient )
+
+Pré Condição > (o/a) Atendente/Nurse/Doctor é um utilizador válido no sistema
+
+Descrição  > 1. O caso de utilização começa quando (o/a) Atendente/Nurse/Doctor  selecciona a opção "Register Patient" .
+	     2. Após seleccionar o "Register Patient" , vai ser permitido ao paciente registar a "Demografic Data"
+"Clinical Data" e "Medications".
+	     3. Depois clica-se no botão "Register Patient" e o paciente é registado.
+
+Pós Condição > Os registos serão guardados nos dados do Paciente.
+
+Registar/Procurar Paciente ( Cenário Alternativo - Register Patient )
+
+Pré Condição > (o/a) Atendente/Nurse/Doctor é um utilizador válido no sistema
+
+Descrição  > 1. O caso de utilização começa quando (o/a) Atendente/Nurse/Doctor  selecciona a opção "Register Patient".
+	     2. Após seleccionar o "Register Patient" , vai ser permitido ao paciente registar a "Demografic Data"
+"Clinical Data" e "Medications".
+		a) O utente já existe e nesse caso  volta para o caso 2.
+	     3. Depois clica-se no botão "Register Patient" e o paciente é registado.
+
+Pós Condição > Os registos serão guardados nos dados do Paciente.
+
+
+Pré-condição:O utilizador tem de estar registado no sistema.
+
+Login System ( Cenário Principal - System Admin )
+
+Pré Condição > O utilizador tem de estar registado no sistema
+
+Descrição > 1. O "System Admin" inicia o software.
+	    2. O "System Admin" faz Login.  
+	    2. O "System Admin" cria com os campos nome e password para os restantes usuarios do programa.
+	    3. O "System Admin" define  o acesso que cada usuario vai ter.
+	    4. O Sistema valida os campos, fecha  "Login" e abre a janela a que tem acesso. 
+
+Login System ( Cenário Alternativo - System Admin )
+ 
+
+Descrição > 1. O "System Admin" inicia o software.
+	    2. O "System Admin" faz Login. 
+		a) O usuario introduz campos inválidos. 
+		b)O sistema mostra uma mensagem de erro "Os dados que introduziu são inválidos" e retorna ao
+		 passo 2 do Cenário Principal.
+	    2. O "System Admin" cria os restantes usuarios do programa com os diversos dados pedidos.
+	    3. O "System Admin" define  o acesso que cada usuario vai ter.
+	    4. O Sistema valida os campos, fecha  "Login" e abre a janela a que tem acesso. 
+
+
+Pós Condição:O usuario fica com acesso à sua área restrita do sistema
+
+Login System ( Cenário Principal - (o/a) Atendente/Nurse/Doctor )
+
+Pré Condição >(o/a) Atendente/Nurse/Doctor tem de estar registado no sistema
+
+Descrição > 1. (o/a) Atendente/Nurse/Doctor inicia o software.
+	    2. (o/a) Atendente/Nurse/Doctor faz Login.  
+	    3. O Sistema valida os campos, fecha  "Login" e abre a janela a que tem acesso.
+
+Login System ( Cenário Alternativo - (o/a) Atendente/Nurse/Doctor )
+
+Pré Condição >(o/a) Atendente/Nurse/Doctor tem de estar registado no sistema
+
+Descrição > 1. (o/a) Atendente/Nurse/Doctor inicia o software.
+	    2. (o/a) Atendente/Nurse/Doctor faz Login. 
+		a) O usuario introduz campos inválidos. 
+		b)O sistema mostra uma mensagem de erro "Os dados que introduziu são inválidos" e retorna ao
+		 passo 2 do Cenário Principal.
+	    3. O Sistema valida os campos, fecha  "Login" e abre a janela a que tem acesso.
+
+

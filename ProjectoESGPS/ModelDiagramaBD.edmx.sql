@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/16/2016 23:19:06
--- Generated from EDMX file: C:\Users\HugoDuarte\documents\visual studio 2015\Projects\ProjectoESGPS\ProjectoESGPS\ModelDiagramaBD.edmx
+-- Date Created: 06/01/2016 16:56:03
+-- Generated from EDMX file: C:\Users\Admin\Documents\Visual Studio 2013\Projects\ProjectoESGPS\ProjectoESGPS\ModelDiagramaBD.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [dbESGPS];
+USE [ESGPS];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -22,6 +22,9 @@ IF OBJECT_ID(N'[dbo].[FK_PatientAppointement]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_PatientClinicalData]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[CDataSet] DROP CONSTRAINT [FK_PatientClinicalData];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PatientFiles]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[FilesSet] DROP CONSTRAINT [FK_PatientFiles];
 GO
 
 -- --------------------------------------------------
@@ -39,6 +42,9 @@ IF OBJECT_ID(N'[dbo].[PatientSet]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[CDataSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[CDataSet];
+GO
+IF OBJECT_ID(N'[dbo].[FilesSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[FilesSet];
 GO
 
 -- --------------------------------------------------
