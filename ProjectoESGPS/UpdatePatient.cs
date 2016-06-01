@@ -152,5 +152,10 @@ namespace ProjectoESGPS
             login.Show();
             this.Hide();
         }
+
+        private void tb_sns_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
