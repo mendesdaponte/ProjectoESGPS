@@ -107,6 +107,7 @@
             this.tb_sns.Name = "tb_sns";
             this.tb_sns.Size = new System.Drawing.Size(293, 20);
             this.tb_sns.TabIndex = 22;
+            this.tb_sns.TextChanged += new System.EventHandler(this.tb_sns_TextChanged);
             // 
             // label2
             // 

@@ -22,3 +22,6 @@ C:\Users\HugoDuarte\Documents\Visual Studio 2015\Projects\ProjectoESGPS\Projecto
 C:\Users\HugoDuarte\documents\visual studio 2015\Projects\ProjectoESGPS\ProjectoESGPS\obj\Debug\ProjectoESGPS.AppointmentList.resources
 C:\Users\HugoDuarte\documents\visual studio 2015\Projects\ProjectoESGPS\ProjectoESGPS\obj\Debug\ProjectoESGPS.csprojResolveAssemblyReference.cache
 C:\Users\HugoDuarte\documents\visual studio 2015\Projects\ProjectoESGPS\ProjectoESGPS\obj\Debug\ProjectoESGPS.UpdateClinicalData.resources
+C:\Users\Diogo\Documents\GitHub\ProjectoESGPS\ProjectoESGPS\bin\Debug\ProjectoESGPS.exe.config
+C:\Users\Diogo\Documents\GitHub\ProjectoESGPS\ProjectoESGPS\obj\Debug\ProjectoESGPS.exe
+C:\Users\Diogo\Documents\GitHub\ProjectoESGPS\ProjectoESGPS\obj\Debug\ProjectoESGPS.pdb
