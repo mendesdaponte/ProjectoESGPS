@@ -28,7 +28,7 @@ namespace ProjectoESGPS
 
             String user = tb_user.Text;
             String pw = tb_pw.Text;
-            bool aux = false;
+            bool aux = false; 
             char tipo;
 
             User utilizador = context.UserSet.Where(i => i.Username == user).FirstOrDefault();
