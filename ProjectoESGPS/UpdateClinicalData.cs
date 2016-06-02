@@ -66,7 +66,7 @@ namespace ProjectoESGPS
 
                         Files file = new Files();
 
-                        file.Dir = destino + aux.ToString() + "." + split[split.Length - 1];
+                        file.Dir = destino + "\\" + aux.ToString() + "." + split[split.Length - 1];
                         file.Patient = context.PatientSet.Where(i => i.SNS == snsPaciente).FirstOrDefault();
 
                         context.FilesSet.Add(file);
